@@ -1,142 +1,149 @@
+:root {
+    --bg-color: #0f172a;
+    --card-bg: rgba(30, 41, 59, 0.7);
+    --primary-color: #38bdf8;
+    --wa-color: #25d366;
+    --success-color: #22c55e;
+    --text-main: #f8fafc;
+    --text-dim: #94a3b8;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 body {
-    background: radial-gradient(circle at top, #1a1a2e, #0f0f1a);
-    color: white;
+    background-color: var(--bg-color);
+    color: var(--text-main);
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
     min-height: 100vh;
     padding: 20px;
 }
 
-.watermark {
-    font-size: 14px;
-    font-weight: bold;
-    letter-spacing: 3px;
-    color: rgba(255, 255, 255, 0.3);
-    margin-bottom: 30px;
-    text-transform: uppercase;
+.bg-glow {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
+    z-index: -1;
 }
 
 .container {
     width: 100%;
     max-width: 400px;
-}
-
-.card {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    padding: 30px;
-    text-align: center;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    border-radius: 28px;
+    padding: 30px 20px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
-.qris-section img {
+.watermark { text-align: center; margin-bottom: 20px; }
+.watermark h1 { font-size: 1.4rem; font-weight: 800; color: #fff; letter-spacing: 1px; margin-top: 8px; }
+.badge { font-size: 0.65rem; background: rgba(56, 189, 248, 0.15); color: var(--primary-color); padding: 4px 12px; border-radius: 20px; text-transform: uppercase; font-weight: 700; }
+
+.qris-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+/* Fix Ukuran QRIS agar tidak gepeng */
+.qris-wrapper {
     width: 200px;
     height: 200px;
-    border-radius: 10px;
-    background: white;
+    background: #fff;
+    border-radius: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 10px;
-    margin-bottom: 15px;
+    overflow: hidden;
 }
 
-.qris-section p {
-    font-size: 14px;
-    margin-bottom: 15px;
-    color: #ccc;
+.qris-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Memastikan gambar tetap proporsional */
 }
 
 .btn-download {
-    display: inline-block;
-    padding: 10px 20px;
-    background: linear-gradient(45deg, #ff416c, #ff4b2b);
-    color: white;
     text-decoration: none;
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    padding: 8px 20px;
     border-radius: 50px;
-    font-weight: bold;
-    font-size: 14px;
+    font-size: 0.8rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     transition: 0.3s;
 }
 
-.btn-download:hover {
-    transform: scale(1.05);
-}
+.btn-download:hover { background: var(--primary-color); color: #000; }
 
-.divider {
-    border: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    margin: 25px 0;
-}
-
-.payment-item {
-    margin-bottom: 20px;
-    text-align: left;
-}
-
-.payment-item label {
-    font-size: 12px;
-    font-weight: bold;
-    color: #00d2ff;
-    display: block;
-    margin-bottom: 5px;
-}
-
-.copy-box {
+.payment-grid { display: flex; flex-direction: column; gap: 12px; }
+.payment-card {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(0, 0, 0, 0.3);
-    padding: 12px 15px;
-    border-radius: 10px;
-    margin-bottom: 5px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 15px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.05);
 }
 
-.copy-box span {
-    font-weight: 600;
-}
+.bank-name { font-size: 0.7rem; color: var(--primary-color); font-weight: 800; display: block; }
+.acc-number { font-size: 1.1rem; font-weight: 700; color: #fff; display: block; }
+.acc-name { font-size: 0.75rem; color: var(--text-dim); }
 
-.copy-box button {
-    background: #00d2ff;
+.copy-trigger {
+    background: var(--primary-color);
     border: none;
-    padding: 5px 12px;
-    border-radius: 5px;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
     cursor: pointer;
-    font-weight: bold;
-    font-size: 12px;
+    transition: 0.3s;
 }
 
-.payment-item small {
-    font-size: 11px;
-    color: #888;
-}
+.copy-trigger.success { background: var(--success-color); color: white; min-width: 120px; }
 
-/* Toast Notification */
-.toast {
-    visibility: hidden;
-    min-width: 200px;
-    background-color: #333;
-    color: #fff;
+/* Bagian Kontak */
+.contact-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px dashed rgba(255,255,255,0.1);
     text-align: center;
-    border-radius: 50px;
-    padding: 10px;
-    position: fixed;
-    z-index: 1;
-    bottom: 30px;
-    font-size: 14px;
 }
 
-.toast.show {
-    visibility: visible;
-    animation: fadein 0.5s, fadeout 0.5s 1.5s;
+.contact-title { font-size: 0.85rem; font-weight: 700; margin-bottom: 15px; color: var(--text-dim); }
+
+.wa-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--wa-color);
+    color: #fff;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 14px;
+    font-weight: 700;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2);
 }
 
-@keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
-@keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+.wa-button:hover { transform: translateY(-2px); filter: brightness(1.1); }
+
+.backup-contact { margin-top: 20px; font-size: 0.8rem; }
+.backup-contact p { color: var(--text-dim); margin-bottom: 5px; }
+.backup-contact a { color: var(--primary-color); text-decoration: none; font-weight: 600; }
+
+.footer { margin-top: 25px; font-size: 0.65rem; color: var(--text-dim); text-align: center; }
