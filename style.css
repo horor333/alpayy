@@ -1,180 +1,142 @@
-:root {
-    --bg-color: #0b0f1a;
-    --card-bg: #161e2d;
-    --primary-color: #38bdf8;
-    --success-color: #10b981;
-    --text-main: #ffffff;
-    --text-dim: #94a3b8;
-}
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background-color: var(--bg-color);
-    color: var(--text-main);
+    background: radial-gradient(circle at top, #1a1a2e, #0f0f1a);
+    color: white;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    padding: 10px;
+    padding: 20px;
 }
 
-/* Background Glow */
-.bg-glow {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(135deg, #0b0f1a 0%, #1e293b 100%);
-    z-index: -1;
+.watermark {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.3);
+    margin-bottom: 30px;
+    text-transform: uppercase;
 }
 
 .container {
     width: 100%;
-    max-width: 450px;
-    background: var(--card-bg);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    /* Desain Persegi Panjang Tegas */
-    border-radius: 4px; 
-    padding: 40px 25px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    max-width: 400px;
 }
 
-.watermark { text-align: center; margin-bottom: 30px; }
-
-.watermark h1 {
-    font-size: 1.6rem;
-    font-weight: 800;
-    margin-top: 12px;
-    color: #fff;
-    letter-spacing: 3px;
-    text-transform: uppercase;
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
 }
 
-.badge {
-    font-size: 0.6rem;
-    background: var(--primary-color);
-    color: #000;
-    padding: 3px 10px;
-    border-radius: 2px; /* Persegi */
-    text-transform: uppercase;
-    font-weight: 900;
-}
-
-.qris-section {
-    margin-bottom: 35px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-}
-
-.qris-wrapper {
-    padding: 10px;
-    background: #fff;
-    border-radius: 2px; /* Persegi */
-}
-
-.qris-wrapper img {
-    display: block;
+.qris-section img {
     width: 200px;
     height: 200px;
+    border-radius: 10px;
+    background: white;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.qris-section p {
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: #ccc;
 }
 
 .btn-download {
-    display: block;
-    width: 200px;
-    background: transparent;
-    color: var(--primary-color);
+    display: inline-block;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    color: white;
     text-decoration: none;
-    padding: 12px;
-    text-align: center;
-    font-size: 0.85rem;
-    font-weight: 700;
-    border: 1px solid var(--primary-color);
-    border-radius: 2px; /* Persegi */
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 14px;
     transition: 0.3s;
 }
 
 .btn-download:hover {
-    background: var(--primary-color);
-    color: #000;
+    transform: scale(1.05);
 }
 
-.instruction {
-    color: var(--text-dim);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+.divider {
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 25px 0;
 }
 
-.payment-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+.payment-item {
+    margin-bottom: 20px;
+    text-align: left;
 }
 
-.payment-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.03);
-    border-left: 4px solid var(--primary-color); /* Aksen garis kiri */
-    padding: 18px;
-    border-radius: 2px; /* Persegi */
-}
-
-.details { text-align: left; }
-
-.bank-name {
+.payment-item label {
+    font-size: 12px;
+    font-weight: bold;
+    color: #00d2ff;
     display: block;
-    font-size: 0.7rem;
-    color: var(--primary-color);
-    font-weight: 800;
     margin-bottom: 5px;
 }
 
-.acc-number {
-    display: block;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: 1px;
+.copy-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 12px 15px;
+    border-radius: 10px;
+    margin-bottom: 5px;
 }
 
-.acc-name {
-    display: block;
-    font-size: 0.75rem;
-    color: var(--text-dim);
-    margin-top: 4px;
+.copy-box span {
+    font-weight: 600;
 }
 
-.copy-trigger {
-    background: #fff;
-    color: #000;
+.copy-box button {
+    background: #00d2ff;
     border: none;
-    padding: 10px 20px;
-    border-radius: 2px; /* Persegi */
-    font-size: 0.75rem;
-    font-weight: 800;
+    padding: 5px 12px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: 0.3s;
-    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 12px;
 }
 
-.copy-trigger.success {
-    background: var(--success-color);
+.payment-item small {
+    font-size: 11px;
+    color: #888;
+}
+
+/* Toast Notification */
+.toast {
+    visibility: hidden;
+    min-width: 200px;
+    background-color: #333;
     color: #fff;
+    text-align: center;
+    border-radius: 50px;
+    padding: 10px;
+    position: fixed;
+    z-index: 1;
+    bottom: 30px;
+    font-size: 14px;
 }
 
-.footer {
-    margin-top: 40px;
-    font-size: 0.65rem;
-    color: var(--text-dim);
-    text-align: center;
-    border-top: 1px solid rgba(255,255,255,0.05);
-    padding-top: 20px;
+.toast.show {
+    visibility: visible;
+    animation: fadein 0.5s, fadeout 0.5s 1.5s;
 }
+
+@keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+@keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
