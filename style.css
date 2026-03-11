@@ -175,3 +175,48 @@ body {
 .backup-card { border-left: 4px solid var(--text-dim); background: rgba(255,255,255,0.01); }
 
 .footer { margin-top: 35px; font-size: 0.6rem; color: var(--text-dim); text-align: center; opacity: 0.5; }
+
+/* ... (Gunakan CSS sebelumnya) ... */
+
+.wa-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--wa-color);
+    color: #fff;
+    text-decoration: none;
+    padding: 14px;
+    border-radius: 2px;
+    font-weight: 800;
+    transition: 0.3s;
+}
+
+/* Warna khusus untuk tombol channel agar terlihat beda sedikit */
+.channel-btn {
+    background: #0088cc; /* Warna biru channel yang elegan */
+    margin-bottom: 25px;
+}
+
+.wa-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Animasi Centang Berputar (Tambahkan ini) */
+.rotate-success {
+    display: inline-block;
+    animation: rotateCheck 0.5s ease-in-out;
+    font-size: 1.2rem;
+}
+
+@keyframes rotateCheck {
+    0% { transform: rotate(-180deg) scale(0); opacity: 0; }
+    100% { transform: rotate(0) scale(1); opacity: 1; }
+}
+
+.copy-trigger.success-active {
+    background: var(--success-color) !important;
+    color: white !important;
+}
+
