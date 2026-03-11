@@ -9,6 +9,12 @@
 </head>
 <body>
 
+    <div class="scrolling-watermark">
+        <div class="watermark-text">PINOCOGAN PINOCOGAN PINOCOGAN PINOCOGAN PINOCOGAN</div>
+        <div class="watermark-text">PINOCOGAN PINOCOGAN PINOCOGAN PINOCOGAN PINOCOGAN</div>
+        <div class="watermark-text">PINOCOGAN PINOCOGAN PINOCOGAN PINOCOGAN PINOCOGAN</div>
+    </div>
+
     <div class="bg-glow"></div>
 
     <div class="container">
@@ -19,7 +25,7 @@
 
         <section class="qris-section">
             <div class="qris-wrapper">
-                <img src="https://files.catbox.moe/n18w69.jpeg" alt="QRIS PINO" id="qris-image">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=085864518943" alt="QRIS PINO" id="qris-image">
             </div>
             
             <a href="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=085864518943" download="QRIS_PINO.png" class="btn-download">
@@ -34,6 +40,49 @@
                 <div class="details">
                     <span class="bank-name">DANA</span>
                     <span class="acc-number" id="dana-num">085864518943</span>
+                    <span class="acc-name">A.N. HERIS LIANA</span>
+                </div>
+                <button class="copy-trigger" onclick="copyText('dana-num', this)">
+                    Salin
+                </button>
+            </div>
+
+            <div class="payment-card">
+                <div class="details">
+                    <span class="bank-name">SeaBank</span>
+                    <span class="acc-number" id="seabank-num">-</span>
+                    <span class="acc-name">A.N. -</span>
+                </div>
+                <button class="copy-trigger" style="opacity: 0.3; cursor: not-allowed;">
+                    Salin
+                </button>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>© 2026 Payment Gateway by Pino</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyText(id, btn) {
+            const text = document.getElementById(id).innerText;
+            if (text === "-") return;
+
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = "Salin";
+                btn.innerText = "Berhasil Disalin!";
+                btn.classList.add('success');
+                
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.classList.remove('success');
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
                     <span class="acc-name">A.N. HERIS LIANA</span>
                 </div>
                 <button class="copy-trigger" onclick="copyText('dana-num', this)">
