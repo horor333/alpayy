@@ -94,3 +94,63 @@
     </script>
 </body>
 </html>
+        <div class="payment-grid">
+            <div class="payment-card">
+                <div class="details">
+                    <span class="bank-name">DANA</span>
+                    <span class="acc-number" id="dana-num">085864518943</span>
+                    <span class="acc-name">A.N. HERIS LIANA</span>
+                </div>
+                <button class="copy-trigger" onclick="copyText('dana-num', this)">Salin</button>
+            </div>
+
+            <div class="payment-card">
+                <div class="details">
+                    <span class="bank-name">SeaBank</span>
+                    <span class="acc-number" id="seabank-num">-</span>
+                    <span class="acc-name">A.N. -</span>
+                </div>
+                <button class="copy-trigger" style="opacity: 0.3; cursor: not-allowed;">Salin</button>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <p class="contact-title">Info Kontak</p>
+            <a href="https://wa.me/6285850612361" target="_blank" class="wa-button">
+                <i class="fab fa-whatsapp"></i> Contact Pino
+            </a>
+            
+            <div class="backup-container">
+                <p class="backup-label">Nomor Cadangan:</p>
+                <div class="payment-card backup-card">
+                    <div class="details">
+                        <span id="backup-num" class="acc-number">085864518943</span>
+                    </div>
+                    <button class="copy-trigger" onclick="copyText('backup-num', this)">Salin</button>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>© 2026 Payment Gateway by Pino</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyText(id, btn) {
+            const text = document.getElementById(id).innerText;
+            if (text === "-") return;
+
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = "Salin";
+                btn.innerText = "Berhasil Disalin!";
+                btn.classList.add('success');
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.classList.remove('success');
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
