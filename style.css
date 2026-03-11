@@ -2,6 +2,7 @@
     --bg-color: #0f172a;
     --card-bg: rgba(30, 41, 59, 0.7);
     --primary-color: #38bdf8;
+    --success-color: #22c55e;
     --text-main: #f8fafc;
     --text-dim: #94a3b8;
 }
@@ -20,10 +21,9 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    overflow-x: hidden;
+    padding: 20px;
 }
 
-/* Background Glow Effect */
 .bg-glow {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -31,9 +31,147 @@ body {
     z-index: -1;
 }
 
-.bg-glow::after {
-    content: '';
-    position: absolute;
+.container {
+    width: 100%;
+    max-width: 400px;
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 28px;
+    padding: 35px 20px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.watermark { text-align: center; }
+
+.watermark h1 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-top: 10px;
+    color: #fff;
+    letter-spacing: 1.5px;
+}
+
+.badge {
+    font-size: 0.65rem;
+    background: rgba(56, 189, 248, 0.15);
+    color: var(--primary-color);
+    padding: 5px 12px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.qris-section {
+    margin: 30px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.qris-wrapper {
+    display: inline-block;
+    padding: 12px;
+    background: #fff;
+    border-radius: 18px;
+}
+
+.qris-wrapper img {
+    display: block;
+    width: 180px;
+    height: 180px;
+}
+
+.btn-download {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: 0.3s;
+}
+
+.btn-download:hover {
+    background: var(--primary-color);
+    color: #0f172a;
+}
+
+.instruction {
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    text-align: center;
+}
+
+.payment-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.payment-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 16px 20px;
+    border-radius: 16px;
+}
+
+.details { text-align: left; }
+
+.bank-name {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.acc-number {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.acc-name {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    margin-top: 2px;
+}
+
+.copy-trigger {
+    background: var(--primary-color);
+    color: #0f172a;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+    min-width: 75px;
+}
+
+.copy-trigger.success {
+    background: var(--success-color);
+    color: white;
+    min-width: 130px;
+}
+
+.footer {
+    margin-top: 30px;
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    text-align: center;
+}
     top: -10%; left: -10%;
     width: 40%; height: 40%;
     background: var(--primary-color);
