@@ -55,9 +55,14 @@
         </div>
 
         <div class="contact-section">
-            <p class="contact-title">Info Kontak</p>
+            <p class="contact-title">Hubungi Admin</p>
             <a href="https://wa.me/6285850612361" target="_blank" class="wa-button">
                 <i class="fab fa-whatsapp"></i> Contact Pino
+            </a>
+
+            <p class="contact-title" style="margin-top: 20px;">Info Stok & Testi</p>
+            <a href="https://whatsapp.com/channel/0029VbC8QmP9Bb5z8S9LHu2h" target="_blank" class="wa-button channel-btn">
+                <i class="fas fa-bullhorn"></i> WhatsApp Channel
             </a>
             
             <div class="backup-container">
@@ -77,44 +82,37 @@
     </div>
 
     <script>
-        // Fungsi untuk Menyalin Teks
         function copyText(id, btn) {
             const text = document.getElementById(id).innerText;
             if (text === "-") return;
 
             navigator.clipboard.writeText(text).then(() => {
-                const originalText = "Salin";
-                btn.innerText = "Berhasil Disalin!";
-                btn.classList.add('success');
+                const originalContent = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check-circle rotate-success"></i>';
+                btn.classList.add('success-active');
+                
                 setTimeout(() => {
-                    btn.innerText = originalText;
-                    btn.classList.remove('success');
+                    btn.innerHTML = originalContent;
+                    btn.classList.remove('success-active');
                 }, 2000);
             });
         }
 
-        // Fungsi untuk Mengunduh Langsung Langsung Langsung!
         function downloadQRIS(url) {
             fetch(url)
                 .then(response => response.blob())
                 .then(blob => {
-                    // Membuat link sementara di memori browser
                     const blobUrl = window.URL.createObjectURL(blob);
                     const a = document.createElement('a');
                     a.style.display = 'none';
                     a.href = blobUrl;
-                    
-                    // Nama file yang akan tersimpan di HP/Laptop user
                     a.download = 'QRIS_PINO_PAYMENT.jpeg';
-                    
                     document.body.appendChild(a);
                     a.click();
-                    
-                    // Hapus link sementara setelah selesai
                     window.URL.revokeObjectURL(blobUrl);
                     document.body.removeChild(a);
                 })
-                .catch(() => alert('Gagal mengunduh gambar. Silakan coba klik kanan dan simpan manual.'));
+                .catch(() => alert('Gagal mengunduh gambar.'));
         }
     </script>
 </body>
