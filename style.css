@@ -1,9 +1,9 @@
 :root {
-    --bg-color: #0f172a;
-    --card-bg: rgba(30, 41, 59, 0.7);
+    --bg-color: #0b0f1a;
+    --card-bg: #161e2d;
     --primary-color: #38bdf8;
-    --success-color: #22c55e;
-    --text-main: #f8fafc;
+    --success-color: #10b981;
+    --text-main: #ffffff;
     --text-dim: #94a3b8;
 }
 
@@ -21,19 +21,199 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 20px;
+    padding: 10px;
+    overflow: hidden; /* Mencegah scrollbar muncul karena watermark bergerak */
 }
 
+/* Watermark Bergerak di Latar Belakang */
+.scrolling-watermark {
+    position: fixed;
+    top: -50%; /* Mulai dari atas layar */
+    left: -50%; /* Mulai dari kiri layar */
+    width: 200%; /* Lebih lebar dari layar */
+    height: 200%; /* Lebih tinggi dari layar */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    transform: rotate(-15deg); /* Memutar watermark sedikit */
+    z-index: -2; /* Di belakang semua elemen */
+}
+
+.watermark-text {
+    font-size: 10rem; /* Ukuran teks watermark sangat besar */
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.03); /* Teks watermark sangat transparan */
+    white-space: nowrap; /* Teks tidak terpotong */
+    animation: scroll-diagonal 10s linear infinite; /* Menjalankan animasi */
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+@keyframes scroll-diagonal {
+    0% {
+        transform: translate(0, 0); /* Mulai dari posisi awal */
+    }
+    100% {
+        transform: translate(-10%, -10%); /* Bergerak ke kiri atas */
+    }
+}
+
+/* Background Glow */
 .bg-glow {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
+    background: linear-gradient(135deg, #0b0f1a 0%, #1e293b 100%);
     z-index: -1;
 }
 
 .container {
     width: 100%;
-    max-width: 400px;
+    max-width: 450px;
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    /* Desain Persegi Panjang Tegas */
+    border-radius: 4px; 
+    padding: 40px 25px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    position: relative; /* Diperlukan untuk menempatkan container di depan watermark */
+    z-index: 1; /* Di depan watermark */
+}
+
+.watermark { text-align: center; margin-bottom: 30px; }
+
+.watermark h1 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-top: 12px;
+    color: #fff;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.badge {
+    font-size: 0.6rem;
+    background: var(--primary-color);
+    color: #000;
+    padding: 3px 10px;
+    border-radius: 2px; /* Persegi */
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.qris-section {
+    margin-bottom: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.qris-wrapper {
+    padding: 10px;
+    background: #fff;
+    border-radius: 2px; /* Persegi */
+}
+
+.qris-wrapper img {
+    display: block;
+    width: 200px;
+    height: 200px;
+}
+
+.btn-download {
+    display: block;
+    width: 200px;
+    background: transparent;
+    color: var(--primary-color);
+    text-decoration: none;
+    padding: 12px;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border: 1px solid var(--primary-color);
+    border-radius: 2px; /* Persegi */
+    transition: 0.3s;
+}
+
+.btn-download:hover {
+    background: var(--primary-color);
+    color: #000;
+}
+
+.instruction {
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.payment-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.payment-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03);
+    border-left: 4px solid var(--primary-color); /* Aksen garis kiri */
+    padding: 18px;
+    border-radius: 2px; /* Persegi */
+}
+
+.details { text-align: left; }
+
+.bank-name {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--primary-color);
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.acc-number {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+.acc-name {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    margin-top: 4px;
+}
+
+.copy-trigger {
+    background: #fff;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 2px; /* Persegi */
+    font-size: 0.75rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
+}
+
+.copy-trigger.success {
+    background: var(--success-color);
+    color: #fff;
+}
+
+.footer {
+    margin-top: 40px;
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 20px;
+}
     background: var(--card-bg);
     backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.1);
