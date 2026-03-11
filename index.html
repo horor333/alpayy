@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Payment Pino | Premium Pay</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="bg-glow"></div>
+
+    <div class="container">
+        <header class="watermark">
+            <span class="badge">Official Payment</span>
+            <h1>ALL PAYMENT PINO</h1>
+        </header>
+
+        <section class="qris-section">
+            <div class="qris-wrapper">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=PINO_PAYMENT" alt="QRIS PINO">
+                <div class="scan-line"></div>
+            </div>
+            <p class="instruction">Scan untuk pembayaran otomatis</p>
+        </section>
+
+        <div class="payment-grid">
+            
+            <div class="payment-card dana">
+                <div class="details">
+                    <span class="bank-name">DANA</span>
+                    <span class="acc-number" id="dana-num">081234567890</span>
+                </div>
+                <button class="copy-trigger" onclick="copyText('dana-num')">
+                    Copy
+                </button>
+            </div>
+
+            <div class="payment-card seabank">
+                <div class="details">
+                    <span class="bank-name">SeaBank</span>
+                    <span class="acc-number" id="seabank-num">9012345678</span>
+                </div>
+                <button class="copy-trigger" onclick="copyText('seabank-num')">
+                    Copy
+                </button>
+            </div>
+
+        </div>
+
+        <footer class="footer">
+            <p>© 2026 Payment Gateway by Pino</p>
+        </footer>
+    </div>
+
+    <script>
+        function copyText(id) {
+            const text = document.getElementById(id).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = event.target;
+                btn.innerText = "Copied!";
+                btn.style.background = "#2ecc71";
+                setTimeout(() => {
+                    btn.innerText = "Copy";
+                    btn.style.background = "rgba(255,255,255,0.1)";
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
