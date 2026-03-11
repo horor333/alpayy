@@ -29,7 +29,7 @@
                 <img src="https://files.catbox.moe/n18w69.jpeg" alt="QRIS PINO" id="qris-image">
             </div>
             
-            <a href="https://files.catbox.moe/n18w69.jpeg" download="QRIS_PINO.jpeg" class="btn-download">
+            <a href="javascript:void(0)" onclick="downloadQRIS('https://files.catbox.moe/n18w69.jpeg')" class="btn-download">
                 Unduh QRIS 🔥
             </a>
         </section>
@@ -77,6 +77,7 @@
     </div>
 
     <script>
+        // Fungsi untuk Menyalin Teks
         function copyText(id, btn) {
             const text = document.getElementById(id).innerText;
             if (text === "-") return;
@@ -90,6 +91,30 @@
                     btn.classList.remove('success');
                 }, 2000);
             });
+        }
+
+        // Fungsi untuk Mengunduh Langsung Langsung Langsung!
+        function downloadQRIS(url) {
+            fetch(url)
+                .then(response => response.blob())
+                .then(blob => {
+                    // Membuat link sementara di memori browser
+                    const blobUrl = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.style.display = 'none';
+                    a.href = blobUrl;
+                    
+                    // Nama file yang akan tersimpan di HP/Laptop user
+                    a.download = 'QRIS_PINO_PAYMENT.jpeg';
+                    
+                    document.body.appendChild(a);
+                    a.click();
+                    
+                    // Hapus link sementara setelah selesai
+                    window.URL.revokeObjectURL(blobUrl);
+                    document.body.removeChild(a);
+                })
+                .catch(() => alert('Gagal mengunduh gambar. Silakan coba klik kanan dan simpan manual.'));
         }
     </script>
 </body>
