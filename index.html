@@ -3,76 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Payment Pino | Payment Gateway</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>All Payment Pino</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-    <div class="bg-glow"></div>
+    <div class="watermark">ALL PAYMENT PINO</div>
 
     <div class="container">
-        <header class="watermark">
-            <span class="badge">Official Payment</span>
-            <h1>ALL PAYMENT PINO</h1>
-        </header>
-
-        <section class="qris-section">
-            <div class="qris-wrapper">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=085864518943" alt="QRIS PINO" id="qris-image">
-            </div>
-            
-            <a href="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=085864518943" download="QRIS_PINO.png" class="btn-download">
-                Unduh QRIS 🔥
-            </a>
-
-            <p class="instruction">Scan QRIS untuk pembayaran cepat</p>
-        </section>
-
-        <div class="payment-grid">
-            <div class="payment-card">
-                <div class="details">
-                    <span class="bank-name">DANA</span>
-                    <span class="acc-number" id="dana-num">085864518943</span>
-                    <span class="acc-name">A.N. HERIS LIANA</span>
-                </div>
-                <button class="copy-trigger" onclick="copyText('dana-num', this)">
-                    Salin
-                </button>
+        <div class="card">
+            <div class="qris-section">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=ContohQRIS" alt="QRIS Logo" id="qris-img">
+                <p>Scan untuk Pembayaran</p>
+                <a href="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=ContohQRIS" download="QRIS_PINO.png" class="btn-download">Unduh Logo 🔥</a>
             </div>
 
-            <div class="payment-card">
-                <div class="details">
-                    <span class="bank-name">SeaBank</span>
-                    <span class="acc-number" id="seabank-num">-</span>
-                    <span class="acc-name">A.N. -</span>
+            <hr class="divider">
+
+            <div class="payment-details">
+                <div class="payment-item">
+                    <label>DANA</label>
+                    <div class="copy-box">
+                        <span id="dana-num">085864518943</span>
+                        <button onclick="copyText('085864518943', 'btn-dana')">Salin</button>
+                    </div>
+                    <small>A.N. HERIS LIANA</small>
                 </div>
-                <button class="copy-trigger" style="opacity: 0.3; cursor: not-allowed;">
-                    Salin
-                </button>
+
+                <div class="payment-item">
+                    <label>SEABANK</label>
+                    <div class="copy-box">
+                        <span id="seabank-num">-</span>
+                        <button onclick="copyText('-', 'btn-sea')">Salin</button>
+                    </div>
+                    <small>A.N. HERIS LIANA</small>
+                </div>
             </div>
         </div>
-
-        <footer class="footer">
-            <p>© 2026 Payment Gateway by Pino</p>
-        </footer>
     </div>
 
-    <script>
-        function copyText(id, btn) {
-            const text = document.getElementById(id).innerText;
-            if (text === "-") return;
+    <div id="toast" class="toast">Berhasil disalin!</div>
 
-            navigator.clipboard.writeText(text).then(() => {
-                const originalText = "Salin";
-                btn.innerText = "Berhasil Disalin!";
-                btn.classList.add('success');
-                
-                setTimeout(() => {
-                    btn.innerText = originalText;
-                    btn.classList.remove('success');
-                }, 2000);
-            });
+    <script>
+        function copyText(text, btnId) {
+            navigator.clipboard.writeText(text);
+            const toast = document.getElementById("toast");
+            toast.classList.add("show");
+            setTimeout(() => { toast.classList.remove("show"); }, 2000);
         }
     </script>
 </body>
