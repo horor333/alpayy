@@ -1,10 +1,10 @@
 :root {
-    --bg-color: #0f172a;
-    --card-bg: rgba(30, 41, 59, 0.7);
+    --bg-color: #0b0f1a;
+    --card-bg: #161e2d;
     --primary-color: #38bdf8;
     --wa-color: #25d366;
-    --success-color: #22c55e;
-    --text-main: #f8fafc;
+    --success-color: #10b981;
+    --text-main: #ffffff;
     --text-dim: #94a3b8;
 }
 
@@ -23,107 +23,134 @@ body {
     align-items: center;
     min-height: 100vh;
     padding: 20px;
+    overflow-x: hidden;
+}
+
+/* Watermark Bergerak */
+.scrolling-watermark {
+    position: fixed;
+    top: -50%; left: -50%; width: 200%; height: 200%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    transform: rotate(-15deg);
+    z-index: -2;
+}
+
+.watermark-text {
+    font-size: 8rem;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.02);
+    white-space: nowrap;
+    animation: scroll-diagonal 15s linear infinite;
+    text-transform: uppercase;
+}
+
+@keyframes scroll-diagonal {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(-10%, -10%); }
 }
 
 .bg-glow {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
-    background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
+    background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0b0f1a 100%);
     z-index: -1;
 }
 
 .container {
     width: 100%;
-    max-width: 400px;
+    max-width: 420px;
     background: var(--card-bg);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 28px;
-    padding: 30px 20px;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 4px; /* Full Persegi Panjang */
+    padding: 35px 25px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 1;
 }
 
-.watermark { text-align: center; margin-bottom: 20px; }
-.watermark h1 { font-size: 1.4rem; font-weight: 800; color: #fff; letter-spacing: 1px; margin-top: 8px; }
-.badge { font-size: 0.65rem; background: rgba(56, 189, 248, 0.15); color: var(--primary-color); padding: 4px 12px; border-radius: 20px; text-transform: uppercase; font-weight: 700; }
+.watermark { text-align: center; margin-bottom: 25px; }
+.watermark h1 { font-size: 1.5rem; font-weight: 800; color: #fff; letter-spacing: 2px; margin-top: 10px; }
+.badge { font-size: 0.6rem; background: var(--primary-color); color: #000; padding: 4px 12px; border-radius: 2px; text-transform: uppercase; font-weight: 900; }
 
 .qris-section {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 }
 
-/* Fix Ukuran QRIS agar tidak gepeng */
 .qris-wrapper {
-    width: 200px;
-    height: 200px;
+    width: 220px;
+    height: 220px;
     background: #fff;
-    border-radius: 18px;
+    border-radius: 2px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
-    overflow: hidden;
+    padding: 8px;
 }
 
 .qris-wrapper img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Memastikan gambar tetap proporsional */
+    object-fit: contain;
 }
 
 .btn-download {
     text-decoration: none;
-    background: rgba(255, 255, 255, 0.05);
-    color: #fff;
-    padding: 8px 20px;
-    border-radius: 50px;
-    font-size: 0.8rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: transparent;
+    color: var(--primary-color);
+    padding: 10px 25px;
+    border-radius: 2px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border: 1px solid var(--primary-color);
     transition: 0.3s;
 }
 
 .btn-download:hover { background: var(--primary-color); color: #000; }
 
-.payment-grid { display: flex; flex-direction: column; gap: 12px; }
+.payment-grid { display: flex; flex-direction: column; gap: 15px; }
 .payment-card {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(255, 255, 255, 0.03);
-    padding: 15px;
-    border-radius: 16px;
-    border: 1px solid rgba(255,255,255,0.05);
+    background: rgba(255, 255, 255, 0.02);
+    padding: 18px;
+    border-radius: 2px;
+    border-left: 4px solid var(--primary-color);
 }
 
-.bank-name { font-size: 0.7rem; color: var(--primary-color); font-weight: 800; display: block; }
+.bank-name { font-size: 0.7rem; color: var(--primary-color); font-weight: 800; margin-bottom: 4px; display: block; }
 .acc-number { font-size: 1.1rem; font-weight: 700; color: #fff; display: block; }
 .acc-name { font-size: 0.75rem; color: var(--text-dim); }
 
 .copy-trigger {
-    background: var(--primary-color);
+    background: #fff;
+    color: #000;
     border: none;
-    padding: 6px 12px;
-    border-radius: 8px;
+    padding: 8px 16px;
+    border-radius: 2px;
     font-size: 0.75rem;
-    font-weight: 700;
+    font-weight: 800;
     cursor: pointer;
     transition: 0.3s;
+    text-transform: uppercase;
 }
 
-.copy-trigger.success { background: var(--success-color); color: white; min-width: 120px; }
+.copy-trigger.success { background: var(--success-color); color: white; min-width: 140px; }
 
-/* Bagian Kontak */
+/* Contact Section */
 .contact-section {
     margin-top: 30px;
-    padding-top: 20px;
+    padding-top: 25px;
     border-top: 1px dashed rgba(255,255,255,0.1);
-    text-align: center;
 }
 
-.contact-title { font-size: 0.85rem; font-weight: 700; margin-bottom: 15px; color: var(--text-dim); }
+.contact-title { font-size: 0.8rem; font-weight: 800; margin-bottom: 15px; color: var(--text-dim); text-transform: uppercase; text-align: center; }
 
 .wa-button {
     display: flex;
@@ -133,17 +160,17 @@ body {
     background: var(--wa-color);
     color: #fff;
     text-decoration: none;
-    padding: 12px;
-    border-radius: 14px;
-    font-weight: 700;
+    padding: 14px;
+    border-radius: 2px;
+    font-weight: 800;
     transition: 0.3s;
-    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2);
+    margin-bottom: 25px;
 }
 
-.wa-button:hover { transform: translateY(-2px); filter: brightness(1.1); }
+.wa-button:hover { transform: translateY(-3px); }
 
-.backup-contact { margin-top: 20px; font-size: 0.8rem; }
-.backup-contact p { color: var(--text-dim); margin-bottom: 5px; }
-.backup-contact a { color: var(--primary-color); text-decoration: none; font-weight: 600; }
+/* Backup Contact Card */
+.backup-label { font-size: 0.75rem; color: var(--text-dim); margin-bottom: 8px; text-align: center; font-weight: 600; }
+.backup-card { border-left: 4px solid var(--text-dim); background: rgba(255,255,255,0.01); }
 
-.footer { margin-top: 25px; font-size: 0.65rem; color: var(--text-dim); text-align: center; }
+.footer { margin-top: 35px; font-size: 0.6rem; color: var(--text-dim); text-align: center; opacity: 0.5; }
