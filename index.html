@@ -10,6 +10,12 @@
 </head>
 <body>
 
+    <div class="scrolling-watermark">
+        <div class="watermark-text">PINOCOGAN PINOCOGAN PINOCOGAN PINOCOGAN</div>
+        <div class="watermark-text">PINOCOGAN PINOCOGAN PINOCOGAN PINOCOGAN</div>
+        <div class="watermark-text">PINOCOGAN PINOCOGAN PINOCOGAN PINOCOGAN</div>
+    </div>
+
     <div class="bg-glow"></div>
 
     <div class="container">
@@ -20,10 +26,10 @@
 
         <section class="qris-section">
             <div class="qris-wrapper">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=085864518943" alt="QRIS PINO" id="qris-image">
+                <img src="https://files.catbox.moe/n18w69.jpeg" alt="QRIS PINO" id="qris-image">
             </div>
             
-            <a href="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=085864518943" download="QRIS_PINO.png" class="btn-download">
+            <a href="https://files.catbox.moe/n18w69.jpeg" download="QRIS_PINO.jpeg" class="btn-download">
                 Unduh QRIS 🔥
             </a>
         </section>
@@ -54,9 +60,14 @@
                 <i class="fab fa-whatsapp"></i> Contact Pino
             </a>
             
-            <div class="backup-contact">
-                <p>Nomor Cadangan:</p>
-                <a href="https://wa.me/6285864518943" target="_blank">0858-6451-8943</a>
+            <div class="backup-container">
+                <p class="backup-label">Nomor Cadangan:</p>
+                <div class="payment-card backup-card">
+                    <div class="details">
+                        <span id="backup-num" class="acc-number">085864518943</span>
+                    </div>
+                    <button class="copy-trigger" onclick="copyText('backup-num', this)">Salin</button>
+                </div>
             </div>
         </div>
 
